@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Liberado - Script Raspadinha</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            text-align: center;
+            padding: 50px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .success-icon {
+            font-size: 5rem;
+            color: #00D95F;
+            margin-bottom: 20px;
+            animation: popIn 0.5s ease;
+        }
+
+        h1 { margin-bottom: 10px; font-size: 2.5rem; }
+        p { color: #a1a1a1; margin-bottom: 40px; font-size: 1.1rem; max-width: 600px; }
+
+        .download-box {
+            background: #141414;
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #333;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .btn-download {
+            background-color: #00D95F;
+            color: #000;
+            padding: 20px 40px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            display: block;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 0 15px rgba(0, 217, 95, 0.3);
+        }
+
+        .btn-download:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(0, 217, 95, 0.5);
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="success-icon">
+        <i class="fas fa-check-circle"></i>
+    </div>
+
+    <h1>Pagamento Confirmado!</h1>
+    <p>Obrigado pela compra. O sistema identificou seu pagamento e liberou o acesso ao código fonte.</p>
+
+    <div class="download-box">
+        <p style="margin-bottom: 20px; color: white;">Clique no botão abaixo para baixar:</p>
+        
+        <a href="https://drive.google.com/file/d/15y5vqXcXPt4yJ66_ri5_iyX8hvtwLW2n/view?usp=sharing" class="btn-download" target="_blank">
+            <i class="fas fa-cloud-download-alt"></i> BAIXAR SCRIPT AGORA
+        </a>
+    </div>
+
+    <p style="margin-top: 30px; font-size: 0.9rem;">Dúvidas? Entre em contato pelo WhatsApp.</p>
+
+</body>
+</html>
