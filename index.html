@@ -3,165 +3,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Venda de Script - Site de Raspadinhas</title>
+    <title>Script Raspadinha Premium - Código Fonte Completo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Reset básico e Estilos */
         :root {
-            --primary: #009ee3; /* Azul Mercado Pago */
-            --dark: #1a1a1a;
-            --light: #f5f5f5;
-            --accent: #2ecc71;
+            --primary: #00D95F; /* Verde Neon do seu sistema */
+            --bg-dark: #0a0a0a;
+            --bg-card: #141414;
+            --text-light: #ffffff;
+            --text-gray: #a1a1a1;
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
             line-height: 1.6;
-            color: #333;
-            background-color: var(--light);
         }
 
-        /* Header */
+        /* --- Header --- */
         header {
-            background: var(--dark);
-            color: white;
             padding: 20px 0;
             text-align: center;
+            border-bottom: 1px solid #333;
         }
+        
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; }
 
-        /* Hero Section */
+        /* --- Hero Section --- */
         .hero {
-            background: linear-gradient(135deg, #2c3e50 0%, #000000 100%);
-            color: white;
-            padding: 60px 20px;
             text-align: center;
+            padding: 80px 20px;
+            background: radial-gradient(circle at center, #1a2e21 0%, #0a0a0a 70%);
         }
 
         .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
         }
+
+        .hero span { color: var(--primary); }
 
         .hero p {
             font-size: 1.2rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto 40px auto;
         }
 
-        /* Botão de Compra Principal */
-        .btn-buy {
+        /* Botão Pulsante */
+        .btn-cta {
             background-color: var(--primary);
-            color: white;
-            padding: 15px 40px;
-            text-decoration: none;
-            font-weight: bold;
+            color: #000;
+            padding: 18px 50px;
             font-size: 1.2rem;
+            font-weight: 800;
+            text-decoration: none;
             border-radius: 50px;
-            transition: background 0.3s;
             display: inline-block;
-            box-shadow: 0 4px 15px rgba(0, 158, 227, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 0 20px rgba(0, 217, 95, 0.4);
         }
 
-        .btn-buy:hover {
-            background-color: #007ab8;
-            transform: translateY(-2px);
+        .btn-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(0, 217, 95, 0.6);
         }
 
-        /* Lista de Benefícios */
+        /* --- Grid de Imagens (Showcase) --- */
+        .showcase {
+            padding: 50px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .card-img {
+            background: var(--bg-card);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: transform 0.3s;
+        }
+
+        .card-img:hover { transform: translateY(-5px); border-color: var(--primary); }
+        
+        .card-img img { width: 100%; height: auto; display: block; }
+        
+        .card-label { padding: 15px; font-weight: bold; text-align: center; color: var(--primary); }
+
+        /* --- Funcionalidades --- */
         .features {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 0 20px;
+            padding: 80px 20px;
+            background-color: var(--bg-card);
         }
 
-        .feature-item {
-            background: white;
-            margin-bottom: 15px;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            display: flex;
-            align-items: center;
+        .container { max-width: 1100px; margin: 0 auto; }
+        
+        .section-title { text-align: center; margin-bottom: 60px; font-size: 2.2rem; }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
 
-        .check-icon {
-            color: var(--accent);
-            font-weight: bold;
-            margin-right: 15px;
-            font-size: 1.5rem;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
+        .feature-box {
+            background: #0a0a0a;
             padding: 30px;
-            font-size: 0.9rem;
-            color: #666;
-            border-top: 1px solid #ddd;
+            border-radius: 15px;
+            border: 1px solid #333;
+            text-align: left;
         }
 
-        /* Responsividade */
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 1.8rem; }
+        .feature-box i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .feature-box h3 { margin-bottom: 10px; font-size: 1.3rem; }
+        .feature-box p { color: var(--text-gray); font-size: 0.95rem; }
+
+        /* --- Footer --- */
+        footer {
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid #333;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .btn-cta { width: 100%; padding: 15px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h3>Softwares Premium</h3>
+        <div class="logo">🚀 Script Premium</div>
     </header>
 
     <section class="hero">
-        <h1>Tenha seu Próprio Site de Raspadinhas</h1>
-        <p>Código fonte completo, painel administrativo e pronto para lucrar.</p>
+        <h1>Tenha seu Próprio Site de <br><span>Raspadinhas Lucrativo</span></h1>
+        <p>Sistema completo com PIX Automático, Painel Administrativo Financeiro, Sistema de Afiliados e Design Dark Mode moderno.</p>
         
-        <a href="https://mpago.la/1Km95uU" class="btn-buy" target="_blank">
-    Comprar Agora com Mercado Pago
+        <a href="https://mpago.la/1Km95uU" class="btn-cta" target="_blank">
+            <i class="fas fa-shopping-cart"></i> COMPRAR CÓDIGO FONTE
         </a>
-        <p style="font-size: 0.9rem; margin-top: 10px; opacity: 0.7;">Entrega imediata após o pagamento</p>
+        <p style="margin-top: 15px; font-size: 0.9rem; opacity: 0.7;">🔒 Entrega Automática via Download Imediato</p>
+    </section>
+
+    <section class="showcase">
+        <h2 class="section-title">Interface Premium & Responsiva</h2>
+        <div class="showcase-grid">
+            <div class="card-img">
+                <img src="https://placehold.co/600x400/141414/00D95F?text=Painel+de+Raspadinhas" alt="Raspadinhas">
+                <div class="card-label">Jogos Atrativos</div>
+            </div>
+            <div class="card-img">
+                <img src="https://placehold.co/600x400/141414/00D95F?text=Painel+Admin+Financeiro" alt="Dashboard">
+                <div class="card-label">Dashboard Financeiro Completo</div>
+            </div>
+            <div class="card-img">
+                <img src="https://placehold.co/600x400/141414/00D95F?text=Sistema+Indique+e+Ganhe" alt="Mobile">
+                <div class="card-label">Sistema Indique e Ganhe</div>
+            </div>
+        </div>
     </section>
 
     <section class="features">
-        <h2 style="text-align: center; margin-bottom: 30px;">O que está incluído no pacote?</h2>
-        
-        <div class="feature-item">
-            <span class="check-icon">✓</span>
-            <div>
-                <strong>Código Fonte Completo</strong>
-                <br>Acesso total aos arquivos para hospedar onde quiser.
-            </div>
-        </div>
+        <div class="container">
+            <h2 class="section-title">Por que este é o <span style="color:var(--primary)">Melhor Script?</span></h2>
+            
+            <div class="features-grid">
+                <div class="feature-box">
+                    <i class="fas fa-wallet"></i>
+                    <h3>Gateway de Pagamento</h3>
+                    <p>Sistema pronto para Depósitos e Saques via PIX com aprovação instantânea no painel.</p>
+                </div>
 
-        <div class="feature-item">
-            <span class="check-icon">✓</span>
-            <div>
-                <strong>Painel Administrativo</strong>
-                <br>Gerencie usuários, configure as chances de ganho e visualize lucros.
-            </div>
-        </div>
+                <div class="feature-box">
+                    <i class="fas fa-cogs"></i>
+                    <h3>Painel Admin Poderoso</h3>
+                    <p>Gerencie usuários, veja o saldo total em carteira, controle depósitos confirmados e saques pendentes.</p>
+                </div>
 
-        <div class="feature-item">
-            <span class="check-icon">✓</span>
-            <div>
-                <strong>Design Responsivo</strong>
-                <br>Funciona perfeitamente em Celulares e Computadores.
-            </div>
-        </div>
+                <div class="feature-box">
+                    <i class="fas fa-users"></i>
+                    <h3>Sistema de Afiliados</h3>
+                    <p>Função "Indique e Ganhe" nativa para viralizar seu site. Usuários ganham por convidar amigos.</p>
+                </div>
 
-        <div class="feature-item">
-            <span class="check-icon">✓</span>
-            <div>
-                <strong>Instalação Fácil</strong>
-                <br>Acompanha manual de instalação passo a passo.
+                <div class="feature-box">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>100% Responsivo</h3>
+                    <p>Design moderno (Dark Mode) que funciona perfeitamente em celulares Android e iPhone.</p>
+                </div>
+
+                <div class="feature-box">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Código Aberto</h3>
+                    <p>Você recebe o código fonte completo. Hospede onde quiser e tenha controle total do seu negócio.</p>
+                </div>
+
+                <div class="feature-box">
+                    <i class="fas fa-ticket-alt"></i>
+                    <h3>Múltiplas Raspadinhas</h3>
+                    <p>Suporte para vários tipos de jogos e prêmios configuráveis pelo administrador.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2025 Todos os direitos reservados.</p>
-        <p>Pagamento seguro processado pelo <strong>Mercado Pago</strong>.</p>
+        <a href="https://mpago.la/1Km95uU" class="btn-cta" style="margin-bottom: 30px; font-size: 1rem; padding: 12px 30px;">
+            GARANTIR MINHA CÓPIA AGORA
+        </a>
+        <p>&copy; 2025 Script Raspadinha Premium. Todos os direitos reservados.</p>
     </footer>
 
 </body>
